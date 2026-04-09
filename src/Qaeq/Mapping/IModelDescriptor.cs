@@ -1,4 +1,6 @@
-﻿namespace Qaeq.Mapping;
+﻿using Qaeq.Mapping.Descriptors;
+
+namespace Qaeq.Mapping;
 
 /// <summary>
 /// A read-only, computed description of a mapped entity type.
@@ -27,4 +29,19 @@ public interface IModelDescriptor
     /// The database schema name.
     /// </summary>
     string Schema { get; }
+
+    /// <summary>
+    /// The mapped columns for this entity.
+    /// </summary>
+    IReadOnlyList<ColumnDescriptor> Columns { get; }
+
+    /// <summary>
+    /// The primary key descriptors.
+    /// </summary>
+    IReadOnlyList<KeyDescriptor> Keys { get; }
+
+    /// <summary>
+    /// The relationship descriptors for this entity.
+    /// </summary>
+    IReadOnlyList<RelationshipDescriptor> Relationships { get; }
 }
