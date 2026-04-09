@@ -17,6 +17,15 @@ public sealed class TableAttribute : Attribute
     public string Schema { get; set; } = "dbo";
 
     /// <summary>
+    /// When <see langword="true"/> (default), only properties decorated with
+    /// <see cref="ColumnAttribute"/> are mapped to database columns.
+    /// When <see langword="false"/>, all public instance properties are mapped
+    /// as columns (excluding virtual properties and those with <see cref="NotMappedAttribute"/>).
+    /// Defaults to <see langword="true"/>.
+    /// </summary>
+    public bool ExplicitColumns { get; set; } = true;
+
+    /// <summary>
     /// Initializes a new instance of <see cref="TableAttribute"/> with the specified table name.
     /// </summary>
     /// <param name="name">The database table name.</param>
