@@ -7,6 +7,10 @@
     <File Path="nuget.config" />
     <File Path="README.md" />
   </Folder>
+  <Project Path="Qaeq.Analyzers/Qaeq.Analyzers.CodeFixes/Qaeq.Analyzers.CodeFixes.csproj" Id="d4b5529d-d8ad-4de6-8574-7e116912b14f" />
+  <Project Path="Qaeq.Analyzers/Qaeq.Analyzers.Package/Qaeq.Analyzers.Package.csproj" Id="9dd161eb-66ea-4c28-b32e-2c4cd2af06f8" />
+  <Project Path="Qaeq.Analyzers/Qaeq.Analyzers.Test/Qaeq.Tests.Analyzers.csproj" Id="8f1fff5f-ca64-435e-bf54-f9dd7a854c13" />
+  <Project Path="Qaeq.Analyzers/Qaeq.Analyzers/Qaeq.Analyzers.csproj" Id="e5317a05-e026-4eea-b050-d6018ea9c0af" />
   <Project Path="samples/Qaeq.Sample/Qaeq.Sample.csproj" />
   <Project Path="src/Qaeq/Qaeq.csproj" />
   <Project Path="tests/Qaeq.Tests.Integration/Qaeq.Tests.Integration.csproj" />
