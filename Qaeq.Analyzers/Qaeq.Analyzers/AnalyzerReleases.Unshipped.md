@@ -1,7 +1,7 @@
 ; Unshipped analyzer releases
 ; https://github.com/dotnet/roslyn-analyzers/blob/main/src/Microsoft.CodeAnalysis.Analyzers/ReleaseTrackingAnalyzers.Help.md
 
-## New Rules
+### New Rules
 Rule ID | Category | Severity | Notes
---------|----------|----------|-------
-QaeqAnalyzers | Naming | Warning | Template placeholder rule
+--------|----------|----------|--------------------------
+QaeqAnalyzers | Naming   | Warning  | Template placeholder rule
