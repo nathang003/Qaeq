@@ -1,6 +1,4 @@
 ﻿using Microsoft.CodeAnalysis;
-using Microsoft.CodeAnalysis.CSharp;
-using System;
 using System.Collections.Immutable;
 
 namespace Qaeq.Analyzers.Test
@@ -14,20 +12,36 @@ namespace Qaeq.Analyzers.Test
         /// related to nullability mapped to <see cref="ReportDiagnostic.Error"/>, which is then used to enable all
         /// of these warnings for default validation during analyzer and code fix tests.
         /// </summary>
-        internal static ImmutableDictionary<string, ReportDiagnostic> NullableWarnings { get; } = GetNullableWarningsFromCompiler();
+        internal static ImmutableDictionary<string, ReportDiagnostic> NullableWarnings { get; } = GetNullableWarnings();
 
-        private static ImmutableDictionary<string, ReportDiagnostic> GetNullableWarningsFromCompiler()
+        private static ImmutableDictionary<string, ReportDiagnostic> GetNullableWarnings()
         {
-            string[] args = { "/warnaserror:nullable" };
-            var commandLineArguments = CSharpCommandLineParser.Default.Parse(args, baseDirectory: Environment.CurrentDirectory, sdkDirectory: Environment.CurrentDirectory);
-            var nullableWarnings = commandLineArguments.CompilationOptions.SpecificDiagnosticOptions;
+            var builder = ImmutableDictionary.CreateBuilder<string, ReportDiagnostic>();
 
-            // Workaround for https://github.com/dotnet/roslyn/issues/41610
-            nullableWarnings = nullableWarnings
-                .SetItem("CS8632", ReportDiagnostic.Error)
-                .SetItem("CS8669", ReportDiagnostic.Error);
+            // Nullable reference type warning codes (CS8600–CS8699 range).
+            // Covers the core nullable warnings introduced in C# 8.0 and expanded through C# 11+.
+            // Corresponds to the set enabled by /warnaserror:nullable in the Roslyn compiler.
+            for (int i = 8600; i <= 8699; i++)
+            {
+                builder[$"CS{i}"] = ReportDiagnostic.Error;
+            }
 
-            return nullableWarnings;
+            // Additional nullable-related warnings outside the main CS86xx range.
+            // CS8597: Thrown value may be null.
+            // CS8762–CS8777: Nullability postcondition/precondition attribute violations.
+            // CS8794, CS8819: Pattern matching nullability warnings.
+            // CS8824–CS8825: Nullability of parameter/return type mismatch.
+            foreach (var id in new[]
+            {
+                "CS8597", "CS8762", "CS8763", "CS8764", "CS8765", "CS8766",
+                "CS8767", "CS8768", "CS8769", "CS8770", "CS8774", "CS8775",
+                "CS8776", "CS8777", "CS8794", "CS8819", "CS8824", "CS8825",
+            })
+            {
+                builder[id] = ReportDiagnostic.Error;
+            }
+
+            return builder.ToImmutable();
         }
     }
 }

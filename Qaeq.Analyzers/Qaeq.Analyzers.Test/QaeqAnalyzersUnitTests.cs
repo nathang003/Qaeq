@@ -1,16 +1,15 @@
-﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
-using System.Threading.Tasks;
+﻿using System.Threading.Tasks;
+using Xunit;
 using VerifyCS = Qaeq.Analyzers.Test.CSharpCodeFixVerifier<
     Qaeq.Analyzers.QaeqAnalyzersAnalyzer,
     Qaeq.Analyzers.QaeqAnalyzersCodeFixProvider>;
 
 namespace Qaeq.Analyzers.Test
 {
-    [TestClass]
     public class QaeqAnalyzersUnitTest
     {
-        //No diagnostics expected to show up
-        [TestMethod]
+        // No diagnostics expected to show up
+        [Fact]
         public async Task TestMethod1()
         {
             var test = @"";
@@ -18,8 +17,8 @@ namespace Qaeq.Analyzers.Test
             await VerifyCS.VerifyAnalyzerAsync(test);
         }
 
-        //Diagnostic and CodeFix both triggered and checked for
-        [TestMethod]
+        // Diagnostic and CodeFix both triggered and checked for
+        [Fact]
         public async Task TestMethod2()
         {
             var test = @"
