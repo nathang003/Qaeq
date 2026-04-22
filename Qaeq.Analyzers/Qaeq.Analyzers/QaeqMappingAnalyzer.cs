@@ -28,12 +28,7 @@ public class QaeqMappingAnalyzer : DiagnosticAnalyzer
 
         // Check if class has [Table] attribute
         var tableAttribute = classSymbol.GetAttributes()
-            .FirstOrDefault(attribute =>
-               attribute.AttributeClass?.Name == "TableAttribute" &&
-               attribute.AttributeClass.ContainingNamespace.Name == "Qaeq" &&
-               attribute.AttributeClass.ContainingNamespace.ContainingNamespace?.Name == "Mapping" &&
-               attribute.AttributeClass.ContainingNamespace.ContainingNamespace?.ContainingNamespace?.Name == "Attributes");
-
+            .FirstOrDefault(attribute => attribute.AttributeClass?.ToDisplayString() == "Qaeq.Mapping.TableAttribute");
         if (tableAttribute == null)
             return;
 
