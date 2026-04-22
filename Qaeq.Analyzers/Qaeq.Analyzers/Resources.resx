@@ -117,16 +117,13 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="AnalyzerDescription" xml:space="preserve">
-    <value>Type names should be all uppercase.</value>
-    <comment>An optional longer localizable description of the diagnostic.</comment>
+  <data name="QAEQ001_Title" xml:space="preserve">
+    <value>Unmapped virtual property with ExplicitColumns = false</value>
   </data>
-  <data name="AnalyzerMessageFormat" xml:space="preserve">
-    <value>Type name '{0}' contains lowercase letters</value>
-    <comment>The format-able message the diagnostic displays.</comment>
+  <data name="QAEQ001_MessageFormat" xml:space="preserve">
+    <value>Virtual property '{0}' on {1} is not mapped and ExplicitColumns = false; add [NotMapped], [Navigation], or [Column] attribute</value>
   </data>
-  <data name="AnalyzerTitle" xml:space="preserve">
-    <value>Type name contains lowercase letters</value>
-    <comment>The title of the diagnostic.</comment>
+  <data name="QAEQ001_Description" xml:space="preserve">
+    <value>When a [Table] has ExplicitColumns = false, all public non-virtual properties are implicitly mapped as columns. Virtual properties must be explicitly handled with [Column], [Navigation], or [NotMapped] attributes.</value>
   </data>
 </root>

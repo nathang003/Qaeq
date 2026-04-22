@@ -3,5 +3,5 @@
 
 ### New Rules
 Rule ID | Category | Severity | Notes
---------|----------|----------|--------------------------
-QaeqAnalyzers | Naming   | Warning  | Template placeholder rule
+--------|----------|----------|--------------------------------- 
+QAEQ001 | Usage    | Warning  | Rule for Qaeq mapping validation

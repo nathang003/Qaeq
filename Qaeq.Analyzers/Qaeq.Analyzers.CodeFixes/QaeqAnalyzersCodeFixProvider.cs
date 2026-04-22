@@ -17,7 +17,7 @@ namespace Qaeq.Analyzers
     {
         public sealed override ImmutableArray<string> FixableDiagnosticIds
         {
-            get { return ImmutableArray.Create(QaeqAnalyzersAnalyzer.DiagnosticId); }
+            get { return ImmutableArray.Create("QAEQ001"); }
         }
 
         public sealed override FixAllProvider GetFixAllProvider()
